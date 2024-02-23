@@ -21,7 +21,7 @@ type Item = {
 
 export const Header = ({ items }: { items: Item[] }) => {
   return (
-    <header className="sticky top-0 isolate z-10 py-4">
+    <header className="sticky top-0 isolate z-10 border-b-2 border-gray-200 py-4 dark:border-gray-800">
       <div className="container">
         <div className="grid w-full grid-flow-col grid-cols-[repeat(3,1fr)] justify-between gap-4">
           <Link href="/" legacyBehavior passHref>
