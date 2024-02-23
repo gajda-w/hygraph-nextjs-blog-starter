@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { Feather } from "lucide-react";
-import { ModeToggle } from "@/components/ModeToggle";
+import { ModeToggle } from "@/components/mode-toggle";
 
 import {
   NavigationMenu,
@@ -13,7 +13,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-export type Item = {
+type Item = {
   label: string;
   url: string;
   id: string;
