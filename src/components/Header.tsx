@@ -21,28 +21,28 @@ export type Item = {
 
 export const Header = ({ items }: { items: Item[] }) => {
   return (
-    <NavigationMenu className="max-w-full">
-      <NavigationMenuList className="flex min-w-96 justify-between">
-        <NavigationMenuItem>
+    <header className="sticky top-0 isolate z-10 py-4">
+      <div className="container">
+        <div className="grid w-full grid-flow-col grid-cols-[repeat(3,1fr)] justify-between gap-4">
           <Link href="/" legacyBehavior passHref>
-            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-              <Feather />
-            </NavigationMenuLink>
+            <Feather />
           </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          {items.map((item) => (
-            <Link href={item.url} legacyBehavior passHref key={item.id}>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                {item.label}
-              </NavigationMenuLink>
-            </Link>
-          ))}
-        </NavigationMenuItem>
-        <NavigationMenuItem>
+          <NavigationMenu className="max-w-ful flex">
+            <NavigationMenuList className="flex justify-between">
+              {items.map((item) => (
+                <NavigationMenuItem key={item.id}>
+                  <Link href={item.url} legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                      {item.label}
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
           <ModeToggle />
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+        </div>
+      </div>
+    </header>
   );
 };
