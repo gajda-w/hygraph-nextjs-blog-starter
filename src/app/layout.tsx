@@ -2,11 +2,13 @@ import * as React from "react";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "../../providers.tsx";
-import { Header } from "@/components";
+import { Header, type Item } from "@/components/Header";
+// import {  } from "@/components/ThemeProvider";
+// import { Provider } from "../../providers.tsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const items = [
+const items: Item[] = [
   { label: "Home", url: "/", id: "1" },
   { label: "Posts", url: "/posts", id: "2" },
   { label: "Account", url: "/account", id: "3" },

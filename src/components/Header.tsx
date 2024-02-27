@@ -23,10 +23,18 @@ export const Header = ({ items }: { items: Item[] }) => {
   return (
     <header className="sticky top-0 isolate z-10 py-4">
       <div className="container">
-        <div className="grid w-full grid-flow-col grid-cols-[repeat(3,1fr)] justify-between gap-4">
-          <Link href="/" legacyBehavior passHref>
-            <Feather />
-          </Link>
+        <div className="grid w-full grid-flow-col grid-cols-[repeat(3,1fr)] items-center justify-items-center gap-4">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link href="/" legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    <Feather />
+                  </NavigationMenuLink>
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
           <NavigationMenu className="max-w-ful flex">
             <NavigationMenuList className="flex justify-between">
               {items.map((item) => (

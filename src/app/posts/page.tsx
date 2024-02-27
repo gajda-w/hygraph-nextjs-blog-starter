@@ -1,3 +1,3 @@
 export default async function Page() {
-  return <div>posts</div>;
+  return <div>Posts</div>;
 }
