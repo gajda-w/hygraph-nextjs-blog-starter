@@ -21,7 +21,7 @@ export type Item = {
 
 export const Header = ({ items }: { items: Item[] }) => {
   return (
-    <NavigationMenu className="max-w-full">
+    <NavigationMenu className="bg:white max-w-full dark:bg-black">
       <NavigationMenuList className="flex min-w-96 justify-between">
         <NavigationMenuItem>
           <Link href="/" legacyBehavior passHref>
