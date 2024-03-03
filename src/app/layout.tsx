@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "../../providers.tsx";
 import { Header, type Item } from "@/components/Header";
-// import {  } from "@/components/ThemeProvider";
-// import { Provider } from "../../providers.tsx";
 
 const inter = Inter({ subsets: ["latin"] });
 

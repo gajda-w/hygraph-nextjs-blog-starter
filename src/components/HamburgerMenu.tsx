@@ -35,11 +35,8 @@ export const HamburgerMenu = ({ items }: { items: Item[] }) => {
               <NavigationMenuList className="flex flex-col gap-4 text-3xl">
                 {items.map((item) => (
                   <NavigationMenuItem key={item.id}>
-                    <Link href={item.url} passHref>
-                      <NavigationMenuLink
-                        className="text-white"
-                        onClick={() => setIsMobileMenuVisible(false)}
-                      >
+                    <Link href={item.url} legacyBehavior passHref>
+                      <NavigationMenuLink onClick={() => setIsMobileMenuVisible(false)}>
                         {item.label}
                       </NavigationMenuLink>
                     </Link>
