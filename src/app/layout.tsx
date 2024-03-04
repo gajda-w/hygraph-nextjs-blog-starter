@@ -4,8 +4,6 @@ import "@/styles/globals.css";
 import { Providers } from "../../providers.tsx";
 import { Header, type Item } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-// import {  } from "@/components/ThemeProvider";
-// import { Provider } from "../../providers.tsx";
 
 const inter = Inter({ subsets: ["latin"] });
 
