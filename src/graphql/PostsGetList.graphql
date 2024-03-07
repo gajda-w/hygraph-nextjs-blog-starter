@@ -1,6 +1,5 @@
 query PostsGetList {
   posts {
-    id
-    title
+    ...Post
   }
 }

@@ -1,0 +1,16 @@
+fragment Post on Post {
+  id
+  title
+  date
+  excerpt
+  slug
+  content {
+    text
+  }
+  coverImage {
+    url
+  }
+  author {
+    name
+  }
+}
