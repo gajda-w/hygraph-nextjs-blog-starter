@@ -8,7 +8,7 @@ export default async function Page() {
 
   return (
     <main className="flex min-h-96 flex-col items-center justify-between p-24">
-      <ul className="flex flex-wrap items-center justify-center gap-10">
+      <ul className="flex flex-wrap items-center justify-center gap-5">
         {posts.posts.map((post) => (
           <Link href={`/posts/${post.slug}`} key={post.id}>
             <PostCard post={post} key={post.id} />
