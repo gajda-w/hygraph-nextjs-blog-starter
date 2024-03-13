@@ -1,0 +1,5 @@
+query PostBySlug($slug: String!) {
+  post(where: { slug: $slug }) {
+    ...Post
+  }
+}
