@@ -4,7 +4,6 @@ import React from "react";
 import { notFound } from "next/navigation";
 import { PostBySlugDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 function processTextToElements(text: string): JSX.Element[] {
   const sentences = text.split(". ");
@@ -42,24 +41,12 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between gap-10 px-24 py-5">
-      <h1 className="flex text-center text-4xl font-extrabold italic">{post.post?.title}</h1>
+    <main className="flex min-h-[calc(100vh-132px)] flex-col items-center justify-between gap-10 px-24 py-5">
+      <h1 className="flex text-center text-3xl font-extrabold italic">{post.post?.title}</h1>
       <div className="flex flex-row  gap-10">
-        <Dialog>
-          <DialogTrigger>
-            {" "}
-            <img
-              className="max-w-xl rounded-lg hover:opacity-90"
-              src={post.post?.coverImage?.url}
-              alt="Image"
-            />
-          </DialogTrigger>
-          <DialogContent className="h-[600px] w-[2300px]">
-            <img className="rounded-lg" src={post.post?.coverImage?.url} alt="Image" />
-          </DialogContent>
-        </Dialog>
+        <img className="max-w-xl rounded-lg" src={post.post?.coverImage?.url} alt="Image" />
         <div className="flex w-full flex-col justify-center gap-5 pt-3">
-          <p className="flex w-full  items-center text-3xl">{post.post?.excerpt}</p>
+          <p className="flex w-full  items-center text-2xl">{post.post?.excerpt}</p>
           <p className="flex justify-end">
             {post.post?.author?.name ? `~${post.post?.author.name}` : ""}
           </p>

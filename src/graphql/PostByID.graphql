@@ -1,5 +1,0 @@
-query PostBySlug($id: ID!) {
-  post(where: { id: $id }) {
-    ...Post
-  }
-}

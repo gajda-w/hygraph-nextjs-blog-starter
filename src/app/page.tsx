@@ -1,3 +1,7 @@
 export default function Home() {
-  return <main className="flex min-h-screen flex-col items-center justify-between p-24">Home</main>;
+  return (
+    <div className="flex min-h-[calc(100vh-8rem)] flex-wrap items-center justify-center gap-5 p-5">
+      Home
+    </div>
+  );
 }

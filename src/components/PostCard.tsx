@@ -13,7 +13,7 @@ import {
 export const PostCard = ({ post }: { post: PostFragment }) => {
   return (
     <li className="transform list-none rounded-lg transition-transform duration-300 ease-in-out hover:scale-105">
-      <Card className="w-[350px] overflow-hidden rounded-xl">
+      <Card className="w-[300px] overflow-hidden rounded-xl">
         <CardHeader className="pb-4 text-center">
           <CardTitle className="line-clamp-3">{post.title}</CardTitle>
         </CardHeader>

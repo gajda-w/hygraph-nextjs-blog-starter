@@ -9,7 +9,7 @@ const footerLink = [
 
 export const Footer = () => {
   return (
-    <footer className="fixed inset-x-0 bottom-0 m-4 rounded-lg bg-white shadow dark:bg-gray-800">
+    <footer className="inset-x-0 bottom-0 rounded-lg bg-white py-1.5 shadow dark:bg-gray-800">
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between p-2 md:p-4">
         <span className="text-center text-xs text-gray-500 dark:text-gray-400 md:text-sm">
           © 2024{" "}
