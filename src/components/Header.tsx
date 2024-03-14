@@ -22,11 +22,11 @@ export type Item = {
 
 export const Header = ({ items }: { items: Item[] }) => {
   return (
-    <header className="sticky inset-x-0 top-0 z-10 rounded-lg bg-white py-3 shadow dark:bg-gray-800">
+    <div className="sticky inset-x-0 top-0 z-10 rounded-lg bg-white py-3 shadow dark:bg-gray-800">
       <div className="container">
         <div className="grid w-full grid-flow-col grid-cols-[repeat(3,1fr)] items-center justify-items-center gap-4">
           <Link href="/" legacyBehavior passHref>
-            <Feather className={`cursor-pointer ${navigationMenuTriggerStyle()}`} />
+            <Feather className={`cursor-pointe h-9 md:h-10 ${navigationMenuTriggerStyle()}`} />
           </Link>
           <HamburgerMenu items={items} />
           <NavigationMenu className="max-w-ful hidden md:flex">
@@ -45,6 +45,6 @@ export const Header = ({ items }: { items: Item[] }) => {
           <ModeToggle />
         </div>
       </div>
-    </header>
+    </div>
   );
 };

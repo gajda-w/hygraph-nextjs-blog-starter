@@ -7,7 +7,7 @@ export const Posts = async () => {
   const posts = await executeGraphql(PostsGetListDocument);
 
   return (
-    <ul className="flex min-h-[calc(100vh-8rem)] flex-wrap items-center justify-center gap-5 p-5">
+    <ul className="flex min-h-[calc(100vh-7.5rem)] flex-wrap items-center justify-center gap-5 p-5">
       {posts.posts.map((post) => (
         <Link className="max-h-96" href={`/posts/${post.slug}`} key={post.id}>
           <PostCard post={post} key={post.id} />
