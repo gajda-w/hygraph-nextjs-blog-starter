@@ -42,7 +42,10 @@ export const HamburgerMenu = ({ items }: { items: Item[] }) => {
                 {items.map((item) => (
                   <NavigationMenuItem key={item.id}>
                     <Link href={item.url} legacyBehavior passHref>
-                      <NavigationMenuLink onClick={() => setIsMobileMenuVisible(false)}>
+                      <NavigationMenuLink
+                        className="font-bold"
+                        onClick={() => setIsMobileMenuVisible(false)}
+                      >
                         {item.label}
                       </NavigationMenuLink>
                     </Link>

@@ -36,7 +36,7 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
   }
 
   return (
-    <main className="flex min-h-[calc(100vh-7.5rem)] flex-col items-center justify-between gap-5 px-10 py-5 md:gap-10 md:px-16 lg:px-24">
+    <main className="flex min-h-[calc(100vh-7rem)] flex-col items-center justify-between gap-5 px-10 py-5 md:min-h-[calc(100vh-7rem)] md:gap-10 md:px-16 lg:px-24">
       <h1 className="mt-5 flex text-center text-xl font-extrabold italic md:text-2xl lg:text-3xl">
         {post.post?.title}
       </h1>

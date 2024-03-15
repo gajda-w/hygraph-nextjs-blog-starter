@@ -10,8 +10,8 @@ const footerLink = [
 export const Footer = () => {
   return (
     <footer className="inset-x-0 bottom-0 rounded-lg bg-white py-1.5 shadow dark:bg-gray-800">
-      <div className="flex w-full max-w-screen-xl items-center justify-between p-2 md:p-4">
-        <span className="text-center text-xs text-gray-500 dark:text-gray-400 md:text-sm">
+      <div className="flex w-full max-w-screen-xl items-center justify-center p-2 md:justify-between md:px-4">
+        <span className="text-center text-sm text-gray-500 dark:text-gray-400">
           © 2024{" "}
           <a
             href="https://github.com/gajda-w"
@@ -21,9 +21,9 @@ export const Footer = () => {
           >
             Gajda™
           </a>
-          .<p className="block md:inline"> All Rights Reserved.</p>
+          .<p className="inline"> All Rights Reserved.</p>
         </span>
-        <ul className="flex flex-wrap items-center justify-center text-xs font-medium text-gray-500 dark:text-gray-400 md:text-sm">
+        <ul className="hidden font-medium text-gray-500 dark:text-gray-400 md:flex md:flex-wrap md:text-sm">
           {footerLink.map((footerLink) => (
             <li key={footerLink.id}>
               <a
