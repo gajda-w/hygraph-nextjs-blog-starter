@@ -1,7 +1,6 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
-
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { PostBySlugDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 
@@ -41,10 +40,13 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
         {post.post?.title}
       </h1>
       <div className="flex flex-col items-center gap-5 md:flex-row md:gap-10">
-        <img
+        <Image
           className="flex max-w-full justify-center rounded-lg md:max-w-sm lg:max-w-lg"
-          src={post.post?.coverImage?.url}
+          src={post.post?.coverImage?.url as string}
+          quality={100}
           alt="Image"
+          width={800}
+          height={600}
         />
         <div className="flex w-full flex-col gap-2 pt-3 md:gap-5">
           <p className="flex w-full items-center text-justify text-base md:text-lg lg:text-2xl">

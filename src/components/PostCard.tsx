@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
+import Image from "next/image";
 import { type PostFragment } from "@/gql/graphql";
 
 import {
@@ -25,7 +26,14 @@ export const PostCard = ({ post }: { post: PostFragment }) => {
             {post.excerpt}
           </CardDescription>
           <CardContent className="group hidden p-4 md:block">
-            <img className="rounded-lg" src={post.coverImage?.url} alt="Unable to load an image" />
+            <Image
+              className="rounded-lg"
+              src={post.coverImage?.url as string}
+              alt="Unable to load an image"
+              width={600}
+              height={300}
+              quality={100}
+            />
           </CardContent>
           <CardFooter className="flex items-center justify-between px-3 py-2">
             <p className="text-xs">{post?.date ? (post.date as string) : ""}</p>
