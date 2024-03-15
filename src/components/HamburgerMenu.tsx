@@ -34,7 +34,7 @@ export const HamburgerMenu = ({ items }: { items: Item[] }) => {
             onClick={() => setIsMobileMenuVisible(false)}
             className={`m-4 items-end p-2 ${textColor}`}
           >
-            <X size="25" />
+            <X size="30" />
           </button>
           <div className="flex h-screen w-full place-content-center items-center">
             <NavigationMenu className="h-full w-full">
