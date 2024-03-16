@@ -14,7 +14,7 @@ import * as types from './graphql';
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "fragment Post on Post {\n  id\n  title\n  date\n  excerpt\n  slug\n  content {\n    text\n  }\n  coverImage {\n    url\n  }\n  author {\n    name\n  }\n}": types.PostFragmentDoc,
+    "fragment Post on Post {\n  id\n  title\n  date\n  excerpt\n  slug\n  content {\n    json\n  }\n  coverImage {\n    url\n  }\n  author {\n    name\n  }\n}": types.PostFragmentDoc,
     "query PostBySlug($slug: String!) {\n  post(where: {slug: $slug}) {\n    ...Post\n  }\n}": types.PostBySlugDocument,
     "query PostsGetList {\n  posts {\n    ...Post\n  }\n}": types.PostsGetListDocument,
 };
@@ -22,7 +22,7 @@ const documents = {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "fragment Post on Post {\n  id\n  title\n  date\n  excerpt\n  slug\n  content {\n    text\n  }\n  coverImage {\n    url\n  }\n  author {\n    name\n  }\n}"): typeof import('./graphql').PostFragmentDoc;
+export function graphql(source: "fragment Post on Post {\n  id\n  title\n  date\n  excerpt\n  slug\n  content {\n    json\n  }\n  coverImage {\n    url\n  }\n  author {\n    name\n  }\n}"): typeof import('./graphql').PostFragmentDoc;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
