@@ -6756,10 +6756,19 @@ export type _SystemDateTimeFieldVariation =
   | 'combined'
   | 'localization';
 
+export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { text: string }, coverImage?: { url: string } | null, author?: { name: string } | null };
+
+export type PostBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input'];
+}>;
+
+
+export type PostBySlugQuery = { post?: { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { text: string }, coverImage?: { url: string } | null, author?: { name: string } | null } | null };
+
 export type PostsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsGetListQuery = { posts: Array<{ id: string, title: string }> };
+export type PostsGetListQuery = { posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { text: string }, coverImage?: { url: string } | null, author?: { name: string } | null }> };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -6775,12 +6784,65 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
-
+export const PostFragmentDoc = new TypedDocumentString(`
+    fragment Post on Post {
+  id
+  title
+  date
+  excerpt
+  slug
+  content {
+    text
+  }
+  coverImage {
+    url
+  }
+  author {
+    name
+  }
+}
+    `, {"fragmentName":"Post"}) as unknown as TypedDocumentString<PostFragment, unknown>;
+export const PostBySlugDocument = new TypedDocumentString(`
+    query PostBySlug($slug: String!) {
+  post(where: {slug: $slug}) {
+    ...Post
+  }
+}
+    fragment Post on Post {
+  id
+  title
+  date
+  excerpt
+  slug
+  content {
+    text
+  }
+  coverImage {
+    url
+  }
+  author {
+    name
+  }
+}`) as unknown as TypedDocumentString<PostBySlugQuery, PostBySlugQueryVariables>;
 export const PostsGetListDocument = new TypedDocumentString(`
     query PostsGetList {
   posts {
-    id
-    title
+    ...Post
   }
 }
-    `) as unknown as TypedDocumentString<PostsGetListQuery, PostsGetListQueryVariables>;
+    fragment Post on Post {
+  id
+  title
+  date
+  excerpt
+  slug
+  content {
+    text
+  }
+  coverImage {
+    url
+  }
+  author {
+    name
+  }
+}`) as unknown as TypedDocumentString<PostsGetListQuery, PostsGetListQueryVariables>;
