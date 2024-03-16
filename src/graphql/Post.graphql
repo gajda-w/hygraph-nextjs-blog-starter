@@ -5,7 +5,7 @@ fragment Post on Post {
   excerpt
   slug
   content {
-    text
+    json
   }
   coverImage {
     url

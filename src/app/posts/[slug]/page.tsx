@@ -1,29 +1,10 @@
 import React from "react";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { RichText } from "@graphcms/rich-text-react-renderer";
+import { type RichTextContent } from "@graphcms/rich-text-types";
 import { PostBySlugDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
-
-function processTextToElements(text: string): JSX.Element[] {
-  const sentences = text.split(". ");
-  const elements: JSX.Element[] = [];
-
-  sentences.forEach((sentence, index) => {
-    if (sentence.trim()) {
-      elements.push(
-        <span key={`sentence-${index}`}>
-          {sentence.trim() +
-            (index < sentences.length - 1 && sentence.endsWith("." || ". ") ? "" : ".")}
-        </span>,
-      );
-
-      if ((index + 1) % 5 === 0 && index !== sentences.length - 1) {
-        elements.push(<br key={`break-${index}`} />, <br key={`break-additional-${index}`} />);
-      }
-    }
-  });
-  return elements;
-}
 
 export default async function Post({ params: { slug } }: { params: { slug: string } }) {
   const post = await executeGraphql(PostBySlugDocument, {
@@ -58,9 +39,32 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
         </div>
       </div>
       <div className="w-full">
-        <p className="w-full text-justify text-sm md:text-lg">
-          {processTextToElements(post.post?.content.text || "")}
-        </p>
+        <RichText
+          content={post.post?.content.json as RichTextContent}
+          renderers={{
+            p: ({ children }) => (
+              <p className="text-xl tracking-wider text-stone-500 dark:text-fuchsia-50">
+                {children}
+              </p>
+            ),
+            ol: ({ children }) => (
+              <ol className="my-5 ml-6 list-decimal text-2xl tracking-wide text-fuchsia-50">
+                {children}
+              </ol>
+            ),
+            blockquote: ({ children }) => (
+              <div className="mb-12 mt-10 flex">
+                <div className="h-content mr-6 w-3 bg-white"></div>
+                <div className="text-4xl tracking-wide text-fuchsia-50">{children}</div>
+              </div>
+            ),
+            ul: ({ children }) => (
+              <ul className="my-5 ml-6 list-disc text-3xl tracking-wide text-fuchsia-500">
+                {children}
+              </ul>
+            ),
+          }}
+        />
       </div>
     </main>
   );

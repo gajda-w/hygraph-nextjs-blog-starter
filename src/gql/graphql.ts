@@ -6756,19 +6756,19 @@ export type _SystemDateTimeFieldVariation =
   | 'combined'
   | 'localization';
 
-export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { text: string }, coverImage?: { url: string } | null, author?: { name: string } | null };
+export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null };
 
 export type PostBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type PostBySlugQuery = { post?: { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { text: string }, coverImage?: { url: string } | null, author?: { name: string } | null } | null };
+export type PostBySlugQuery = { post?: { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null } | null };
 
 export type PostsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsGetListQuery = { posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { text: string }, coverImage?: { url: string } | null, author?: { name: string } | null }> };
+export type PostsGetListQuery = { posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null }> };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -6792,7 +6792,7 @@ export const PostFragmentDoc = new TypedDocumentString(`
   excerpt
   slug
   content {
-    text
+    json
   }
   coverImage {
     url
@@ -6815,7 +6815,7 @@ export const PostBySlugDocument = new TypedDocumentString(`
   excerpt
   slug
   content {
-    text
+    json
   }
   coverImage {
     url
@@ -6837,7 +6837,7 @@ export const PostsGetListDocument = new TypedDocumentString(`
   excerpt
   slug
   content {
-    text
+    json
   }
   coverImage {
     url
