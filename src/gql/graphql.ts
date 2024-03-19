@@ -6800,18 +6800,27 @@ export type _SystemDateTimeFieldVariation =
   | 'combined'
   | 'localization';
 
+<<<<<<< HEAD
 export type AuthorFragment = { name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
+=======
+export type AuthorFragment = { name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
+>>>>>>> 000f86a (add display-author component)
 
 export type AuthorByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
 }>;
 
 
+<<<<<<< HEAD
 export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, biography?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
+=======
+export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
+>>>>>>> 000f86a (add display-author component)
 
 export type AuthorsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
+<<<<<<< HEAD
 export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
 
 export type NavigationQueryVariables = Exact<{
@@ -6820,6 +6829,9 @@ export type NavigationQueryVariables = Exact<{
 
 
 export type NavigationQuery = { navigation?: { link: Array<{ displayText?: string | null, slug?: string | null }> } | null };
+=======
+export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
+>>>>>>> 000f86a (add display-author component)
 
 export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null };
 
@@ -6854,7 +6866,10 @@ export const AuthorFragmentDoc = new TypedDocumentString(`
   name
   id
   title
+<<<<<<< HEAD
   biography
+=======
+>>>>>>> 000f86a (add display-author component)
   picture {
     url
     id
@@ -6895,7 +6910,10 @@ export const AuthorByIdDocument = new TypedDocumentString(`
   name
   id
   title
+<<<<<<< HEAD
   biography
+=======
+>>>>>>> 000f86a (add display-author component)
   picture {
     url
     id
@@ -6930,7 +6948,10 @@ export const AuthorsGetListDocument = new TypedDocumentString(`
   name
   id
   title
+<<<<<<< HEAD
   biography
+=======
+>>>>>>> 000f86a (add display-author component)
   picture {
     url
     id
@@ -6938,6 +6959,7 @@ export const AuthorsGetListDocument = new TypedDocumentString(`
     altText
   }
 }`) as unknown as TypedDocumentString<AuthorsGetListQuery, AuthorsGetListQueryVariables>;
+<<<<<<< HEAD
 export const NavigationDocument = new TypedDocumentString(`
     query Navigation($navId: String!) {
   navigation(where: {navId: $navId}) {
@@ -6948,6 +6970,8 @@ export const NavigationDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<NavigationQuery, NavigationQueryVariables>;
+=======
+>>>>>>> 000f86a (add display-author component)
 export const PostBySlugDocument = new TypedDocumentString(`
     query PostBySlug($slug: String!) {
   post(where: {slug: $slug}) {

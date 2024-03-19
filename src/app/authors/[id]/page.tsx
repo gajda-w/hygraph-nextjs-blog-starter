@@ -17,8 +17,9 @@ import {
 } from "@/components/ui/card";
 
 export default async function Author({ params: { id } }: { params: { id: string } }) {
-  const dataAuthor = await executeGraphql(AuthorByIdDocument, {
-    id: id,
+  const dataAuthor = await executeGraphql({
+    query: AuthorByIdDocument,
+    variables: { id },
   });
 
   if (!dataAuthor || !dataAuthor.author) {
@@ -53,12 +54,11 @@ export default async function Author({ params: { id } }: { params: { id: string 
             </Card>
           </Collapsible>
         </CardContent>
-        <CardHeader className="m-0 w-full border-2 border-x-0 border-black p-0 py-5 text-2xl font-bold md:hidden">
-          <CardTitle className="m-0 flex w-full flex-row justify-center p-0">ARTICLES</CardTitle>
+
+        <CardHeader className="m-0 border-2 border-x-0 border-black py-5 text-2xl font-bold dark:border-[#1F2937] md:hidden">
+          <CardTitle className="flex flex-row justify-center">ARTICLES</CardTitle>
         </CardHeader>
-        <CardContent
-          className={`mb-5 mt-10 flex w-full flex-wrap justify-center gap-5 p-0 lg:w-2/3 `}
-        >
+        <CardContent className="m-0 flex w-full flex-wrap justify-center gap-5 px-0 py-8 md:w-4/6 md:justify-evenly lg:px-5">
           {dataAuthor.author?.posts.length > 0 ? (
             <>
               {dataAuthor.author.posts.map((post) => (
