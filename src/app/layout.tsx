@@ -10,7 +10,8 @@ const inter = Inter({ subsets: ["latin"] });
 const items: Item[] = [
   { label: "Home", url: "/", id: "1" },
   { label: "Posts", url: "/posts", id: "2" },
-  { label: "Account", url: "/account", id: "3" },
+  { label: "Authors", url: "/authors", id: "3" },
+  { label: "Account", url: "/account", id: "4" },
 ];
 
 export default function RootLayout({

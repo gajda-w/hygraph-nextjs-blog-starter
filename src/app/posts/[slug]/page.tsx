@@ -1,12 +1,12 @@
-import React from "react";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import Image from "next/image";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { type RichTextContent } from "@graphcms/rich-text-types";
 import { PostBySlugDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 
-export default async function Post({ params: { slug } }: { params: { slug: string } }) {
+export const Post = async ({ params: { slug } }: { params: { slug: string } }) => {
   const post = await executeGraphql(PostBySlugDocument, {
     slug: slug,
   });
@@ -16,7 +16,7 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
   }
 
   return (
-    <main className="flex min-h-[calc(100vh-7rem)] flex-col items-center justify-between gap-5 px-10 py-5 md:min-h-[calc(100vh-7rem)] md:gap-10 md:px-16 lg:px-24">
+    <main className="flex min-h-screen flex-col items-center justify-between gap-5 px-10 py-5 md:min-h-[calc(100vh-7rem)] md:gap-10 md:px-16 lg:px-24">
       <h1 className="mt-5 flex text-center text-xl font-extrabold italic md:text-2xl lg:text-3xl">
         {post.post?.title}
       </h1>
@@ -33,9 +33,16 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
           <p className="flex w-full items-center text-justify text-base md:text-lg lg:text-2xl">
             {post.post?.excerpt}
           </p>
-          <p className="flex justify-end text-sm md:text-base lg:text-lg">
-            {post.post?.author?.name ? `~${post.post?.author.name}` : ""}
-          </p>
+          {post.post?.author?.name ? (
+            <Link
+              href={`/authors/${post.post?.author?.id}`}
+              className="flex justify-end text-sm hover:underline md:text-base lg:text-lg"
+            >
+              ~{post.post?.author?.name}
+            </Link>
+          ) : (
+            <p className="flex justify-end text-sm md:text-base lg:text-lg">Author unknown</p>
+          )}
         </div>
       </div>
       <div className="w-full">
@@ -68,4 +75,6 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
       </div>
     </main>
   );
-}
+};
+
+export default Post;

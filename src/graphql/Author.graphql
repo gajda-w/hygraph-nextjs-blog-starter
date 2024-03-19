@@ -1,0 +1,11 @@
+fragment Author on Author {
+  name
+  id
+  title
+  picture {
+    url
+    id
+    fileName
+    altText
+  }
+}

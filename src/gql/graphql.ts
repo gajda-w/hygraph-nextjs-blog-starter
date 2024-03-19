@@ -6756,19 +6756,33 @@ export type _SystemDateTimeFieldVariation =
   | 'combined'
   | 'localization';
 
-export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null };
+export type AuthorFragment = { name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
+
+export type AuthorByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
+
+export type AuthorsGetListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
+
+export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null };
 
 export type PostBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type PostBySlugQuery = { post?: { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null } | null };
+export type PostBySlugQuery = { post?: { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null } | null };
 
 export type PostsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsGetListQuery = { posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null }> };
+export type PostsGetListQuery = { posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }> };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -6784,6 +6798,19 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
+export const AuthorFragmentDoc = new TypedDocumentString(`
+    fragment Author on Author {
+  name
+  id
+  title
+  picture {
+    url
+    id
+    fileName
+    altText
+  }
+}
+    `, {"fragmentName":"Author"}) as unknown as TypedDocumentString<AuthorFragment, unknown>;
 export const PostFragmentDoc = new TypedDocumentString(`
     fragment Post on Post {
   id
@@ -6799,9 +6826,64 @@ export const PostFragmentDoc = new TypedDocumentString(`
   }
   author {
     name
+    id
   }
 }
     `, {"fragmentName":"Post"}) as unknown as TypedDocumentString<PostFragment, unknown>;
+export const AuthorByIdDocument = new TypedDocumentString(`
+    query AuthorById($id: ID!) {
+  author(where: {id: $id}) {
+    ...Author
+    posts {
+      ...Post
+    }
+  }
+}
+    fragment Author on Author {
+  name
+  id
+  title
+  picture {
+    url
+    id
+    fileName
+    altText
+  }
+}
+fragment Post on Post {
+  id
+  title
+  date
+  excerpt
+  slug
+  content {
+    json
+  }
+  coverImage {
+    url
+  }
+  author {
+    name
+    id
+  }
+}`) as unknown as TypedDocumentString<AuthorByIdQuery, AuthorByIdQueryVariables>;
+export const AuthorsGetListDocument = new TypedDocumentString(`
+    query AuthorsGetList {
+  authors {
+    ...Author
+  }
+}
+    fragment Author on Author {
+  name
+  id
+  title
+  picture {
+    url
+    id
+    fileName
+    altText
+  }
+}`) as unknown as TypedDocumentString<AuthorsGetListQuery, AuthorsGetListQueryVariables>;
 export const PostBySlugDocument = new TypedDocumentString(`
     query PostBySlug($slug: String!) {
   post(where: {slug: $slug}) {
@@ -6822,6 +6904,7 @@ export const PostBySlugDocument = new TypedDocumentString(`
   }
   author {
     name
+    id
   }
 }`) as unknown as TypedDocumentString<PostBySlugQuery, PostBySlugQueryVariables>;
 export const PostsGetListDocument = new TypedDocumentString(`
@@ -6844,5 +6927,6 @@ export const PostsGetListDocument = new TypedDocumentString(`
   }
   author {
     name
+    id
   }
 }`) as unknown as TypedDocumentString<PostsGetListQuery, PostsGetListQueryVariables>;

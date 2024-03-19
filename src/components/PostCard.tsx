@@ -13,11 +13,15 @@ import {
 
 export const PostCard = ({ post }: { post: PostFragment }) => {
   return (
-    <Link className="max-h-96" href={`/posts/${post.slug}`} key={post.id}>
-      <li className="w-[280px] transform list-none rounded-lg transition-transform duration-300 ease-in-out hover:scale-105 lg:w-[280px]">
+    <Link
+      className="flex w-2/5 min-w-[160px] flex-col md:w-1/4 md:max-w-[300px] lg:m-3"
+      href={`/posts/${post.slug}`}
+      key={post.id}
+    >
+      <li className="max-h-96 transform list-none rounded-lg transition-transform duration-300 ease-in-out hover:scale-105">
         <Card className="overflow-hidden rounded-xl">
           <CardHeader className="pb-4 text-center">
-            <CardTitle className="line-clamp-3 text-lg leading-5 md:text-2xl md:font-semibold md:leading-6">
+            <CardTitle className="line-clamp-3 text-lg leading-5 md:font-semibold md:leading-6 lg:text-2xl">
               {post.title}
             </CardTitle>
           </CardHeader>
@@ -34,11 +38,18 @@ export const PostCard = ({ post }: { post: PostFragment }) => {
               quality={100}
             />
           </CardContent>
-          <CardFooter className="flex items-center justify-between px-3 py-2">
-            <p className="text-xs">{post?.date ? (post.date as string) : ""}</p>
-            <p className="text-xs italic">
-              {post.author?.name ? `${post.author?.name}` : "Author unknown"}
+          <CardFooter className="flex items-center justify-center px-3 py-2 md:justify-between">
+            <p className="hidden text-xs md:inline-block">
+              {post?.date ? (post.date as string) : ""}
             </p>
+
+            {post.author?.name ? (
+              <Link href={`/authors/${post.author?.id}`} className="text-xs italic hover:underline">
+                {post.author?.name}
+              </Link>
+            ) : (
+              <p className="text-xs italic">Author unknown</p>
+            )}
           </CardFooter>
         </Card>
       </li>
