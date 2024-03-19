@@ -6803,6 +6803,7 @@ export type _SystemDateTimeFieldVariation =
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type AuthorFragment = { name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
 =======
 export type AuthorFragment = { name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
@@ -6813,6 +6814,9 @@ export type AuthorFragment = { name: string, id: string, title?: string | null, 
 =======
 export type AuthorFragment = { name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
 >>>>>>> 72f86b5 (add display-author component)
+=======
+export type AuthorFragment = { name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
+>>>>>>> d91b0aa (add author bio)
 
 export type AuthorByIdQueryVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -6822,6 +6826,7 @@ export type AuthorByIdQueryVariables = Exact<{
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, biography?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
 =======
 export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
@@ -6832,10 +6837,14 @@ export type AuthorByIdQuery = { author?: { name: string, id: string, title?: str
 =======
 export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
 >>>>>>> 72f86b5 (add display-author component)
+=======
+export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, biography?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
+>>>>>>> d91b0aa (add author bio)
 
 export type AuthorsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -6859,6 +6868,9 @@ export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, t
 =======
 export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
 >>>>>>> 72f86b5 (add display-author component)
+=======
+export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
+>>>>>>> d91b0aa (add author bio)
 
 export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null };
 
@@ -6896,6 +6908,7 @@ export const AuthorFragmentDoc = new TypedDocumentString(`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   biography
 =======
 >>>>>>> 000f86a (add display-author component)
@@ -6904,6 +6917,9 @@ export const AuthorFragmentDoc = new TypedDocumentString(`
 >>>>>>> 17a2d8d (add author bio)
 =======
 >>>>>>> 72f86b5 (add display-author component)
+=======
+  biography
+>>>>>>> d91b0aa (add author bio)
   picture {
     url
     id
@@ -6947,6 +6963,7 @@ export const AuthorByIdDocument = new TypedDocumentString(`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   biography
 =======
 >>>>>>> 000f86a (add display-author component)
@@ -6955,6 +6972,9 @@ export const AuthorByIdDocument = new TypedDocumentString(`
 >>>>>>> 17a2d8d (add author bio)
 =======
 >>>>>>> 72f86b5 (add display-author component)
+=======
+  biography
+>>>>>>> d91b0aa (add author bio)
   picture {
     url
     id
@@ -6992,6 +7012,7 @@ export const AuthorsGetListDocument = new TypedDocumentString(`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   biography
 =======
 >>>>>>> 000f86a (add display-author component)
@@ -7000,6 +7021,9 @@ export const AuthorsGetListDocument = new TypedDocumentString(`
 >>>>>>> 17a2d8d (add author bio)
 =======
 >>>>>>> 72f86b5 (add display-author component)
+=======
+  biography
+>>>>>>> d91b0aa (add author bio)
   picture {
     url
     id
