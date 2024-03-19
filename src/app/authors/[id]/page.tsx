@@ -56,7 +56,7 @@ export const Author = async ({ params: { id } }: { params: { id: string } }) => 
                 <Card className="overflow-hidden rounded-xl">
                   <CardHeader className="pb-4 text-center">
                     <CardTitle className="line-clamp-3 text-lg leading-5 md:font-semibold md:leading-6 lg:text-2xl">
-                      No aritcles yet
+                      No articles yet
                     </CardTitle>
                   </CardHeader>
                   <CardDescription className="line-clamp-3 px-4 text-center">

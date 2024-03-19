@@ -2,6 +2,7 @@ fragment Author on Author {
   name
   id
   title
+  biography
   picture {
     url
     id

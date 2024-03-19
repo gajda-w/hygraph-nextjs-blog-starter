@@ -14,7 +14,7 @@ import * as types from './graphql';
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "fragment Author on Author {\n  name\n  id\n  title\n  picture {\n    url\n    id\n    fileName\n    altText\n  }\n}": types.AuthorFragmentDoc,
+    "fragment Author on Author {\n  name\n  id\n  title\n  biography\n  picture {\n    url\n    id\n    fileName\n    altText\n  }\n}": types.AuthorFragmentDoc,
     "query AuthorById($id: ID!) {\n  author(where: {id: $id}) {\n    ...Author\n    posts {\n      ...Post\n    }\n  }\n}": types.AuthorByIdDocument,
     "query AuthorsGetList {\n  authors {\n    ...Author\n  }\n}": types.AuthorsGetListDocument,
     "fragment Post on Post {\n  id\n  title\n  date\n  excerpt\n  slug\n  content {\n    json\n  }\n  coverImage {\n    url\n  }\n  author {\n    name\n    id\n  }\n}": types.PostFragmentDoc,
@@ -25,7 +25,7 @@ const documents = {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "fragment Author on Author {\n  name\n  id\n  title\n  picture {\n    url\n    id\n    fileName\n    altText\n  }\n}"): typeof import('./graphql').AuthorFragmentDoc;
+export function graphql(source: "fragment Author on Author {\n  name\n  id\n  title\n  biography\n  picture {\n    url\n    id\n    fileName\n    altText\n  }\n}"): typeof import('./graphql').AuthorFragmentDoc;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
