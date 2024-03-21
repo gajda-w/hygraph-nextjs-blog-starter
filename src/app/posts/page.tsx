@@ -2,7 +2,7 @@ import { PostCard } from "@/components/PostCard";
 import { PostsGetListDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 
-export const Posts = async () => {
+export default async function Posts() {
   const posts = await executeGraphql(PostsGetListDocument);
 
   return (
@@ -12,6 +12,4 @@ export const Posts = async () => {
       ))}
     </ul>
   );
-};
-
-export default Posts;
+}
