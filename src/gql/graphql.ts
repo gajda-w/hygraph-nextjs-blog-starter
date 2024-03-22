@@ -6857,6 +6857,7 @@ export type NavigationQueryVariables = Exact<{
 
 export type NavigationQuery = { navigation?: { link: Array<{ displayText?: string | null, slug?: string | null }> } | null };
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
 >>>>>>> 000f86a (add display-author component)
@@ -6871,6 +6872,8 @@ export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, t
 =======
 export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
 >>>>>>> d91b0aa (add author bio)
+=======
+>>>>>>> aa63a2f (to fix hygraph navigation)
 
 export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null };
 
@@ -7034,8 +7037,11 @@ export const AuthorsGetListDocument = new TypedDocumentString(`
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 10ef130 (to fix hygraph navigation)
+=======
+>>>>>>> aa63a2f (to fix hygraph navigation)
 export const NavigationDocument = new TypedDocumentString(`
     query Navigation($navId: String!) {
   navigation(where: {navId: $navId}) {
@@ -7047,12 +7053,15 @@ export const NavigationDocument = new TypedDocumentString(`
 }
     `) as unknown as TypedDocumentString<NavigationQuery, NavigationQueryVariables>;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 000f86a (add display-author component)
 =======
 >>>>>>> 10ef130 (to fix hygraph navigation)
 =======
 >>>>>>> 72f86b5 (add display-author component)
+=======
+>>>>>>> aa63a2f (to fix hygraph navigation)
 export const PostBySlugDocument = new TypedDocumentString(`
     query PostBySlug($slug: String!) {
   post(where: {slug: $slug}) {
