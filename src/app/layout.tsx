@@ -5,6 +5,7 @@ import { Providers } from "../../providers.tsx";
 import { Header, type Item } from "../components/header";
 import { Footer } from "../components/footer";
 import { Navigation } from "@/components/navigation";
+// import { Header, type Item } from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 
