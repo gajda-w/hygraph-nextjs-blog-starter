@@ -16,7 +16,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 
-export const Author = async ({ params: { id } }: { params: { id: string } }) => {
+export default async function Author({ params: { id } }: { params: { id: string } }) {
   const dataAuthor = await executeGraphql(AuthorByIdDocument, {
     id: id,
   });
@@ -104,6 +104,4 @@ export const Author = async ({ params: { id } }: { params: { id: string } }) => 
       <div className="hidden md:block"></div>
     </Card>
   );
-};
-
-export default Author;
+}

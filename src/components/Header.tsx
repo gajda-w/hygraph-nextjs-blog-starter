@@ -48,3 +48,5 @@ export const Header = ({ items }: { items: Item[] }) => {
     </div>
   );
 };
+
+Header.displayName = "Header";

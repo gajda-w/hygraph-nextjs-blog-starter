@@ -2,9 +2,10 @@ import * as React from "react";
 import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "../../providers.tsx";
-import { Header, type Item } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { Header, type Item } from "../components/header";
+import { Footer } from "../components/footer";
 import { Navigation } from "@/components/navigation";
+// import { Header, type Item } from "@/components/header";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -2,7 +2,7 @@ import { AuthorCard } from "@/components/author-card";
 import { executeGraphql } from "@/lib/graphql";
 import { AuthorsGetListDocument } from "@/gql/graphql";
 
-export const Authors = async () => {
+export default async function Authors() {
   const authors = await executeGraphql(AuthorsGetListDocument);
 
   return (
@@ -12,6 +12,4 @@ export const Authors = async () => {
       ))}
     </div>
   );
-};
-
-export default Authors;
+}

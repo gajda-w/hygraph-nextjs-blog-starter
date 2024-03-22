@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "next-themes";
-import { type Item } from "@/components/header";
+
 import {
   navigationMenuTriggerStyle,
   NavigationMenu,
@@ -10,6 +10,12 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
+
+export type Item = {
+  label: string;
+  url: string;
+  id: string;
+};
 
 export const HamburgerMenu = ({ items }: { items: Item[] }) => {
   const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);

@@ -6,7 +6,7 @@ import { type RichTextContent } from "@graphcms/rich-text-types";
 import { PostBySlugDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 
-export const Post = async ({ params: { slug } }: { params: { slug: string } }) => {
+export default async function Post({ params: { slug } }: { params: { slug: string } }) {
   const post = await executeGraphql(PostBySlugDocument, {
     slug: slug,
   });
@@ -75,6 +75,4 @@ export const Post = async ({ params: { slug } }: { params: { slug: string } }) =
       </div>
     </main>
   );
-};
-
-export default Post;
+}
