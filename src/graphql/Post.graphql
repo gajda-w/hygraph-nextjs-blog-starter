@@ -12,5 +12,6 @@ fragment Post on Post {
   }
   author {
     name
+    id
   }
 }

@@ -1487,6 +1487,7 @@ export type Link = Entity & {
   /** The unique identifier */
   id: Scalars['ID']['output'];
   page?: Maybe<LinkPage>;
+  slug?: Maybe<Scalars['String']['output']>;
   /** System stage field */
   stage: Stage;
 };
@@ -1517,6 +1518,7 @@ export type LinkCreateInput = {
   displayText?: InputMaybe<Scalars['String']['input']>;
   externalUrl?: InputMaybe<Scalars['String']['input']>;
   page?: InputMaybe<LinkPageCreateOneInlineInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LinkCreateManyInlineInput = {
@@ -1615,6 +1617,25 @@ export type LinkManyWhereInput = {
   page?: InputMaybe<LinkPageWhereInput>;
   /** All values in which the union is empty */
   page_empty?: InputMaybe<Scalars['Boolean']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LinkOrderByInput =
@@ -1623,7 +1644,9 @@ export type LinkOrderByInput =
   | 'externalUrl_ASC'
   | 'externalUrl_DESC'
   | 'id_ASC'
-  | 'id_DESC';
+  | 'id_DESC'
+  | 'slug_ASC'
+  | 'slug_DESC';
 
 export type LinkPage = Author | Page | Post;
 
@@ -1805,6 +1828,7 @@ export type LinkUpdateInput = {
   displayText?: InputMaybe<Scalars['String']['input']>;
   externalUrl?: InputMaybe<Scalars['String']['input']>;
   page?: InputMaybe<LinkPageUpdateOneInlineInput>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type LinkUpdateManyInlineInput = {
@@ -1950,12 +1974,32 @@ export type LinkWhereInput = {
   page?: InputMaybe<LinkPageWhereInput>;
   /** All values in which the union is empty */
   page_empty?: InputMaybe<Scalars['Boolean']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  /** All values containing the given string. */
+  slug_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values ending with the given string. */
+  slug_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are contained in given list. */
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** Any other value that exists and is not equal to the given value. */
+  slug_not?: InputMaybe<Scalars['String']['input']>;
+  /** All values not containing the given string. */
+  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
+  /** All values not ending with the given string */
+  slug_not_ends_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values that are not contained in given list. */
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  /** All values not starting with the given string. */
+  slug_not_starts_with?: InputMaybe<Scalars['String']['input']>;
+  /** All values starting with the given string. */
+  slug_starts_with?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** References Link record uniquely */
 export type LinkWhereUniqueInput = {
   externalUrl?: InputMaybe<Scalars['String']['input']>;
   id?: InputMaybe<Scalars['ID']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
 };
 
 /** Locale system enumeration */
@@ -6756,19 +6800,40 @@ export type _SystemDateTimeFieldVariation =
   | 'combined'
   | 'localization';
 
-export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null };
+export type AuthorFragment = { name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null };
+
+export type AuthorByIdQueryVariables = Exact<{
+  id: Scalars['ID']['input'];
+}>;
+
+
+export type AuthorByIdQuery = { author?: { name: string, id: string, title?: string | null, biography?: string | null, posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }>, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null } | null };
+
+export type AuthorsGetListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
+
+export type NavigationQueryVariables = Exact<{
+  navId: Scalars['String']['input'];
+}>;
+
+
+export type NavigationQuery = { navigation?: { link: Array<{ displayText?: string | null, slug?: string | null }> } | null };
+
+export type PostFragment = { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null };
 
 export type PostBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type PostBySlugQuery = { post?: { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null } | null };
+export type PostBySlugQuery = { post?: { id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null } | null };
 
 export type PostsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type PostsGetListQuery = { posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string } | null }> };
+export type PostsGetListQuery = { posts: Array<{ id: string, title: string, date: unknown, excerpt?: string | null, slug: string, content: { json: unknown }, coverImage?: { url: string } | null, author?: { name: string, id: string } | null }> };
 
 export class TypedDocumentString<TResult, TVariables>
   extends String
@@ -6784,6 +6849,20 @@ export class TypedDocumentString<TResult, TVariables>
     return this.value;
   }
 }
+export const AuthorFragmentDoc = new TypedDocumentString(`
+    fragment Author on Author {
+  name
+  id
+  title
+  biography
+  picture {
+    url
+    id
+    fileName
+    altText
+  }
+}
+    `, {"fragmentName":"Author"}) as unknown as TypedDocumentString<AuthorFragment, unknown>;
 export const PostFragmentDoc = new TypedDocumentString(`
     fragment Post on Post {
   id
@@ -6799,9 +6878,76 @@ export const PostFragmentDoc = new TypedDocumentString(`
   }
   author {
     name
+    id
   }
 }
     `, {"fragmentName":"Post"}) as unknown as TypedDocumentString<PostFragment, unknown>;
+export const AuthorByIdDocument = new TypedDocumentString(`
+    query AuthorById($id: ID!) {
+  author(where: {id: $id}) {
+    ...Author
+    posts {
+      ...Post
+    }
+  }
+}
+    fragment Author on Author {
+  name
+  id
+  title
+  biography
+  picture {
+    url
+    id
+    fileName
+    altText
+  }
+}
+fragment Post on Post {
+  id
+  title
+  date
+  excerpt
+  slug
+  content {
+    json
+  }
+  coverImage {
+    url
+  }
+  author {
+    name
+    id
+  }
+}`) as unknown as TypedDocumentString<AuthorByIdQuery, AuthorByIdQueryVariables>;
+export const AuthorsGetListDocument = new TypedDocumentString(`
+    query AuthorsGetList {
+  authors {
+    ...Author
+  }
+}
+    fragment Author on Author {
+  name
+  id
+  title
+  biography
+  picture {
+    url
+    id
+    fileName
+    altText
+  }
+}`) as unknown as TypedDocumentString<AuthorsGetListQuery, AuthorsGetListQueryVariables>;
+export const NavigationDocument = new TypedDocumentString(`
+    query Navigation($navId: String!) {
+  navigation(where: {navId: $navId}) {
+    link {
+      displayText
+      slug
+    }
+  }
+}
+    `) as unknown as TypedDocumentString<NavigationQuery, NavigationQueryVariables>;
 export const PostBySlugDocument = new TypedDocumentString(`
     query PostBySlug($slug: String!) {
   post(where: {slug: $slug}) {
@@ -6822,6 +6968,7 @@ export const PostBySlugDocument = new TypedDocumentString(`
   }
   author {
     name
+    id
   }
 }`) as unknown as TypedDocumentString<PostBySlugQuery, PostBySlugQueryVariables>;
 export const PostsGetListDocument = new TypedDocumentString(`
@@ -6844,5 +6991,6 @@ export const PostsGetListDocument = new TypedDocumentString(`
   }
   author {
     name
+    id
   }
 }`) as unknown as TypedDocumentString<PostsGetListQuery, PostsGetListQueryVariables>;
