@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "next-themes";
-
 import {
   navigationMenuTriggerStyle,
   NavigationMenu,
