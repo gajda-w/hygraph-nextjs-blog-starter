@@ -1,9 +1,11 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { ChevronsUpDown } from "lucide-react";
 import { AuthorByIdDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 import { AuthorCard } from "@/components/AuthorCard";
 import { PostCard } from "@/components/PostCard";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 import {
   Card,
@@ -24,13 +26,32 @@ export const Author = async ({ params: { id } }: { params: { id: string } }) => 
   }
   return (
     <Card className="m-0 flex min-h-[calc(100vh-7rem)] flex-col justify-between gap-5 border-none">
-      <CardHeader className="flex flex-row  border-2 border-x-0 border-black p-0 py-5 text-2xl font-bold dark:border-[#1F2937] lg:pl-4">
-        <CardTitle className="flex w-1/3 flex-row justify-center">AUTHOR</CardTitle>
-        <CardTitle className="hidden w-2/3 justify-center md:flex md:flex-row">ARTICLES</CardTitle>
+      <CardHeader className="hidden border-2 border-x-0 border-black p-0 py-5 text-2xl font-bold dark:border-[#1F2937] md:flex md:flex-row ">
+        <CardTitle className="flex w-full flex-row justify-center md:w-1/3">AUTHOR</CardTitle>
+        <CardTitle className="w-2/3 justify-center md:flex md:flex-row">ARTICLES</CardTitle>
       </CardHeader>
-      <CardContent className="m-0 flex w-full flex-col justify-center p-0 md:flex-row md:justify-between">
-        <CardContent className="block w-full px-5 md:my-10 md:w-1/3 lg:mx-5 lg:my-[51px]">
-          <AuthorCard author={dataAuthor.author} />
+      <CardContent className="m-0 flex w-full flex-col justify-between p-0 md:flex-row">
+        <CardHeader className="m-0 border-2 border-x-0 border-black py-5 text-2xl font-bold dark:border-[#1F2937] md:hidden">
+          <CardTitle className="flex flex-row justify-center">AUTHOR</CardTitle>
+        </CardHeader>
+
+        <CardContent className="flex w-full flex-col justify-center  px-5  md:w-1/3 md:justify-start lg:mx-5 lg:my-3">
+          <Card className="border-none pt-8 shadow-none">
+            <AuthorCard author={dataAuthor.author} />
+          </Card>
+          <Collapsible className="mt-3 transform transition-transform duration-300">
+            <Card className="flex flex-col py-2">
+              <CollapsibleTrigger className="flex w-full flex-row items-center">
+                <CardTitle className="w-4/5 text-base">Authors Biography</CardTitle>
+                <ChevronsUpDown className="flex size-5 w-1/5" />
+              </CollapsibleTrigger>
+              <CollapsibleContent
+                className={`${dataAuthor.author.biography ? "text-justify" : "text-center"} px-3 pt-1  text-sm`}
+              >
+                {dataAuthor.author.biography ? dataAuthor.author.biography : "No biography yet."}
+              </CollapsibleContent>
+            </Card>
+          </Collapsible>
         </CardContent>
         <CardHeader className="m-0 w-full border-2 border-x-0 border-black p-0 py-5 text-2xl font-bold md:hidden">
           <CardTitle className="m-0 flex w-full flex-row justify-center p-0">ARTICLES</CardTitle>
@@ -40,12 +61,6 @@ export const Author = async ({ params: { id } }: { params: { id: string } }) => 
         >
           {dataAuthor.author?.posts.length > 0 ? (
             <>
-              {dataAuthor.author.posts.map((post) => (
-                <PostCard post={post} key={post.id} />
-              ))}
-              {dataAuthor.author.posts.map((post) => (
-                <PostCard post={post} key={post.id} />
-              ))}
               {dataAuthor.author.posts.map((post) => (
                 <PostCard post={post} key={post.id} />
               ))}
@@ -86,7 +101,7 @@ export const Author = async ({ params: { id } }: { params: { id: string } }) => 
           )}
         </CardContent>
       </CardContent>
-      <div></div>
+      <div className="hidden md:block"></div>
     </Card>
   );
 };
