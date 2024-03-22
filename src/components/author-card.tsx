@@ -11,7 +11,7 @@ export const AuthorCard = ({ author }: { author: AuthorFragment }) => {
       key={author.id}
       className="m-0 w-full transform rounded-lg p-0 transition-transform duration-300 ease-in-out hover:scale-105 md:w-1/3"
     >
-      <Card className="flex flex-row justify-start gap-5 p-3 md:justify-center">
+      <Card className="flex flex-row justify-start gap-5 p-3 ">
         <CardContent className="m-0 p-1">
           <Avatar className="size-20 align-middle">
             <AvatarImage

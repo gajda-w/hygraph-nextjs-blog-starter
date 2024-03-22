@@ -17,6 +17,7 @@ const documents = {
     "fragment Author on Author {\n  name\n  id\n  title\n  biography\n  picture {\n    url\n    id\n    fileName\n    altText\n  }\n}": types.AuthorFragmentDoc,
     "query AuthorById($id: ID!) {\n  author(where: {id: $id}) {\n    ...Author\n    posts {\n      ...Post\n    }\n  }\n}": types.AuthorByIdDocument,
     "query AuthorsGetList {\n  authors {\n    ...Author\n  }\n}": types.AuthorsGetListDocument,
+    "query Navigation($navId: String!) {\n  navigation(where: {navId: $navId}) {\n    link {\n      displayText\n      slug\n    }\n  }\n}": types.NavigationDocument,
     "fragment Post on Post {\n  id\n  title\n  date\n  excerpt\n  slug\n  content {\n    json\n  }\n  coverImage {\n    url\n  }\n  author {\n    name\n    id\n  }\n}": types.PostFragmentDoc,
     "query PostBySlug($slug: String!) {\n  post(where: {slug: $slug}) {\n    ...Post\n  }\n}": types.PostBySlugDocument,
     "query PostsGetList {\n  posts {\n    ...Post\n  }\n}": types.PostsGetListDocument,
@@ -34,6 +35,10 @@ export function graphql(source: "query AuthorById($id: ID!) {\n  author(where: {
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "query AuthorsGetList {\n  authors {\n    ...Author\n  }\n}"): typeof import('./graphql').AuthorsGetListDocument;
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "query Navigation($navId: String!) {\n  navigation(where: {navId: $navId}) {\n    link {\n      displayText\n      slug\n    }\n  }\n}"): typeof import('./graphql').NavigationDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

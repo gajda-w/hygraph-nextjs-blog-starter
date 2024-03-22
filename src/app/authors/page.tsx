@@ -1,4 +1,4 @@
-import { AuthorCard } from "@/components/AuthorCard";
+import { AuthorCard } from "@/components/author-card";
 import { executeGraphql } from "@/lib/graphql";
 import { AuthorsGetListDocument } from "@/gql/graphql";
 

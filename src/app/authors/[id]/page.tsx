@@ -3,8 +3,8 @@ import Image from "next/image";
 import { ChevronsUpDown } from "lucide-react";
 import { AuthorByIdDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
-import { AuthorCard } from "@/components/AuthorCard";
-import { PostCard } from "@/components/PostCard";
+import { AuthorCard } from "@/components/author-card";
+import { PostCard } from "@/components/post-card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 import {

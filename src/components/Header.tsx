@@ -12,7 +12,7 @@ import {
   NavigationMenuLink,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { HamburgerMenu } from "@/components/HamburgerMenu";
+import { HamburgerMenu } from "@/components/hamburger-menu";
 
 export type Item = {
   label: string;
