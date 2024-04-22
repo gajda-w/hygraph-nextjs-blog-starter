@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "next-themes";
@@ -10,13 +9,9 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
-export type Item = {
-  label: string;
-  url: string;
-  id: string;
-};
+const navId = "main-navigation";
 
-export const HamburgerMenu = ({ items }: { items: Item[] }) => {
+export const HamburgerMenu = () => {
   const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
   const { theme } = useTheme();
 
@@ -43,20 +38,7 @@ export const HamburgerMenu = ({ items }: { items: Item[] }) => {
           </button>
           <div className="flex h-screen w-full place-content-center items-center">
             <NavigationMenu className="h-full w-full">
-              <NavigationMenuList className={`flex flex-col gap-4 text-3xl ${textColor}`}>
-                {items.map((item) => (
-                  <NavigationMenuItem key={item.id}>
-                    <Link href={item.url} legacyBehavior passHref>
-                      <NavigationMenuLink
-                        className="font-bold"
-                        onClick={() => setIsMobileMenuVisible(false)}
-                      >
-                        {item.label}
-                      </NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
+              <Navigation navId={navId} />
             </NavigationMenu>
           </div>
         </div>

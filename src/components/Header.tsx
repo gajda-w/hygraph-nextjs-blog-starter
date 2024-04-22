@@ -5,14 +5,9 @@ import Link from "next/link";
 import { Feather } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 
-import {
-  NavigationMenu,
-  NavigationMenuList,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
+import { NavigationMenu, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 import { HamburgerMenu } from "@/components/hamburger-menu";
+import { Navigation } from "@/components/navigation";
 
 export type Item = {
   label: string;
@@ -20,7 +15,9 @@ export type Item = {
   id: string;
 };
 
-export const Header = ({ items }: { items: Item[] }) => {
+const navId = "main-navigation";
+
+export const Header = () => {
   return (
     <div className="sticky inset-x-0 top-0 z-10 bg-white py-3 shadow dark:bg-gray-800">
       <div className="container">
@@ -28,19 +25,9 @@ export const Header = ({ items }: { items: Item[] }) => {
           <Link href="/" legacyBehavior passHref>
             <Feather className={`cursor-pointe h-9 md:h-10 ${navigationMenuTriggerStyle()}`} />
           </Link>
-          <HamburgerMenu items={items} />
+          <HamburgerMenu />
           <NavigationMenu className="max-w-ful hidden md:flex">
-            <NavigationMenuList className="flex justify-between">
-              {items.map((item) => (
-                <NavigationMenuItem key={item.id}>
-                  <Link href={item.url} legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                      {item.label}
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              ))}
-            </NavigationMenuList>
+            <Navigation navId={navId} />
           </NavigationMenu>
           <ModeToggle />
         </div>
