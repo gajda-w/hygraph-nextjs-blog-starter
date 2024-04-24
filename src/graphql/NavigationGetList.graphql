@@ -1,0 +1,7 @@
+query Navigation($navId: String!) {
+  navigation(where: { navId: $navId }) {
+    link {
+      ...Link
+    }
+  }
+}

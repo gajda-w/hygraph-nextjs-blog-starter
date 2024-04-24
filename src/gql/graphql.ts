@@ -6850,6 +6850,8 @@ export type AuthorsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 <<<<<<< HEAD
 export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
 
+export type LinkFragment = { displayText?: string | null, slug?: string | null };
+
 export type NavigationQueryVariables = Exact<{
   navId: Scalars['String']['input'];
 }>;
@@ -6931,6 +6933,12 @@ export const AuthorFragmentDoc = new TypedDocumentString(`
   }
 }
     `, {"fragmentName":"Author"}) as unknown as TypedDocumentString<AuthorFragment, unknown>;
+export const LinkFragmentDoc = new TypedDocumentString(`
+    fragment Link on Link {
+  displayText
+  slug
+}
+    `, {"fragmentName":"Link"}) as unknown as TypedDocumentString<LinkFragment, unknown>;
 export const PostFragmentDoc = new TypedDocumentString(`
     fragment Post on Post {
   id
@@ -7046,11 +7054,11 @@ export const NavigationDocument = new TypedDocumentString(`
     query Navigation($navId: String!) {
   navigation(where: {navId: $navId}) {
     link {
-      displayText
-      slug
+      ...Link
     }
   }
 }
+<<<<<<< HEAD
     `) as unknown as TypedDocumentString<NavigationQuery, NavigationQueryVariables>;
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7062,6 +7070,12 @@ export const NavigationDocument = new TypedDocumentString(`
 >>>>>>> 72f86b5 (add display-author component)
 =======
 >>>>>>> aa63a2f (to fix hygraph navigation)
+=======
+    fragment Link on Link {
+  displayText
+  slug
+}`) as unknown as TypedDocumentString<NavigationQuery, NavigationQueryVariables>;
+>>>>>>> 46f65c5 (add navigation query)
 export const PostBySlugDocument = new TypedDocumentString(`
     query PostBySlug($slug: String!) {
   post(where: {slug: $slug}) {
