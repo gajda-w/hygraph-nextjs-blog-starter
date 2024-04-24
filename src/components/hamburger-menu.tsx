@@ -1,5 +1,5 @@
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+// HamburgerMenu.js
+import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import {
   navigationMenuTriggerStyle,
@@ -9,24 +9,27 @@ import {
   NavigationMenuList,
 } from "@/components/ui/navigation-menu";
 
-const navId = "main-navigation";
-
-export const HamburgerMenu = () => {
+export const HamburgerMenu = ({ navigations }: { navigations: LinkType[] | undefined }) => {
   const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
   const { theme } = useTheme();
+  const [isClient, setIsClient] = useState(false);
 
-  const bgColor = theme === "dark" ? "bg-white" : "bg-black";
-  const textColor = theme === "dark" ? "text-black" : "text-white";
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const bgColor = isClient ? (theme === "dark" ? "bg-white" : "bg-black") : "bg-black";
+  const textColor = isClient ? (theme === "dark" ? "text-black" : "text-white") : "text-white";
 
   return (
     <div className="md:hidden">
       <button
-        className={`p-2 md:hidden ${navigationMenuTriggerStyle()} ${!textColor}`}
+        className={`h-9 px-2 md:hidden ${navigationMenuTriggerStyle()}`}
         onClick={() => setIsMobileMenuVisible(!isMobileMenuVisible)}
       >
-        <Menu size={25} />
+        {isMobileMenuVisible ? <div className="size-6" /> : <Menu size={25} />}
       </button>
-      <div>
+      {isClient && (
         <div
           className={`fixed inset-0 z-40 flex transform flex-col items-end ${bgColor} bg-opacity-90 transition-transform duration-300 md:hidden ${isMobileMenuVisible ? "translate-x-0" : "translate-x-full"}`}
         >
@@ -38,13 +41,17 @@ export const HamburgerMenu = () => {
           </button>
           <div className="flex h-screen w-full place-content-center items-center">
             <NavigationMenu className="h-full w-full">
-              <Navigation navId={navId} />
+              <NavigationMenuList className={`flex flex-col gap-4 ${!textColor}`}>
+                {navigations?.map((link) => (
+                  <NavigationMenuItem key={link.slug} onClick={() => setIsMobileMenuVisible(false)}>
+                    <NavigationLink navigationLink={link} className="p-6 text-xl" />
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
             </NavigationMenu>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
-
-HamburgerMenu.displayName = "HamburgerMenu";
