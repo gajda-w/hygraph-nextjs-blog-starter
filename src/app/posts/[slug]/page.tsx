@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -9,6 +10,7 @@ import { executeGraphql } from "@/lib/graphql";
 export default async function Post({ params: { slug } }: { params: { slug: string } }) {
   const post = await executeGraphql(PostBySlugDocument, {
     slug: slug,
+    cache: "no-store",
   });
 
   if (!post) {
