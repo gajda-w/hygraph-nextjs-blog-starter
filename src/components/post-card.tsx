@@ -13,7 +13,7 @@ import {
 
 export const PostCard = ({ post }: { post: PostFragment }) => {
   return (
-    <li className="flex w-2/5 min-w-[160px] flex-col md:w-1/4 md:max-w-[300px] lg:m-3">
+    <li className="flex w-4/5 min-w-[160px] flex-col md:w-4/5 md:max-w-[300px] lg:m-3 lg:w-full">
       <Link href={`/posts/${post.slug}`} key={post.id} className="">
         <Card className="max-h-96 transform list-none rounded-2xl transition-transform duration-300 ease-in-out hover:scale-105">
           <Card className="flex flex-col justify-between overflow-hidden rounded-xl">
