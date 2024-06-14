@@ -25,7 +25,7 @@ export const Header = async () => {
             <div className="hidden gap-8 md:flex">
               <div className="flex items-center gap-4">
                 {navigationData.navigation?.link.map((link) => (
-                  <Link key={link.slug} href={link.slug || ""}>
+                  <Link key={link.slug} href={`/${link.slug}`}>
                     <div>{link.displayText}</div>
                   </Link>
                 ))}
