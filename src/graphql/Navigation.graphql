@@ -1,8 +1,4 @@
-query Navigation($navId: String!) {
-  navigation(where: { navId: $navId }) {
-    link {
-      displayText
-      slug
-    }
-  }
+fragment Link on Link {
+  displayText
+  slug
 }

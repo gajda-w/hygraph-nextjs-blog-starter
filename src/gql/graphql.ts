@@ -6814,6 +6814,8 @@ export type AuthorsGetListQueryVariables = Exact<{ [key: string]: never; }>;
 
 export type AuthorsGetListQuery = { authors: Array<{ name: string, id: string, title?: string | null, biography?: string | null, picture?: { url: string, id: string, fileName: string, altText?: string | null } | null }> };
 
+export type LinkFragment = { displayText?: string | null, slug?: string | null };
+
 export type NavigationQueryVariables = Exact<{
   navId: Scalars['String']['input'];
 }>;
@@ -6863,6 +6865,12 @@ export const AuthorFragmentDoc = new TypedDocumentString(`
   }
 }
     `, {"fragmentName":"Author"}) as unknown as TypedDocumentString<AuthorFragment, unknown>;
+export const LinkFragmentDoc = new TypedDocumentString(`
+    fragment Link on Link {
+  displayText
+  slug
+}
+    `, {"fragmentName":"Link"}) as unknown as TypedDocumentString<LinkFragment, unknown>;
 export const PostFragmentDoc = new TypedDocumentString(`
     fragment Post on Post {
   id
@@ -6942,12 +6950,14 @@ export const NavigationDocument = new TypedDocumentString(`
     query Navigation($navId: String!) {
   navigation(where: {navId: $navId}) {
     link {
-      displayText
-      slug
+      ...Link
     }
   }
 }
-    `) as unknown as TypedDocumentString<NavigationQuery, NavigationQueryVariables>;
+    fragment Link on Link {
+  displayText
+  slug
+}`) as unknown as TypedDocumentString<NavigationQuery, NavigationQueryVariables>;
 export const PostBySlugDocument = new TypedDocumentString(`
     query PostBySlug($slug: String!) {
   post(where: {slug: $slug}) {

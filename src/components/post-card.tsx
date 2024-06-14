@@ -13,47 +13,43 @@ import {
 
 export const PostCard = ({ post }: { post: PostFragment }) => {
   return (
-    <Link
-      className="flex w-2/5 min-w-[160px] flex-col md:w-1/4 md:max-w-[300px] lg:m-3"
-      href={`/posts/${post.slug}`}
-      key={post.id}
-    >
-      <li className="max-h-96 transform list-none rounded-lg transition-transform duration-300 ease-in-out hover:scale-105">
-        <Card className="overflow-hidden rounded-xl">
-          <CardHeader className="pb-4 text-center">
-            <CardTitle className="line-clamp-3 text-lg leading-5 md:font-semibold md:leading-6 lg:text-2xl">
-              {post.title}
-            </CardTitle>
-          </CardHeader>
-          <CardDescription className="line-clamp-3 px-4 text-center">
-            {post.excerpt}
-          </CardDescription>
-          <CardContent className="group hidden p-4 md:block">
-            <Image
-              className="rounded-lg"
-              src={post.coverImage?.url as string}
-              alt="Unable to load an image"
-              width={600}
-              height={300}
-              quality={100}
-            />
-          </CardContent>
-          <CardFooter className="flex items-center justify-center px-3 py-2 md:justify-between">
-            <p className="hidden text-xs md:inline-block">
-              {post?.date ? (post.date as string) : ""}
-            </p>
+    <li className="flex w-4/5 min-w-[160px] flex-col md:w-4/5 md:max-w-[300px] lg:m-3 lg:w-full">
+      <Link href={`/posts/${post.slug}`} key={post.id} className="">
+        <Card className="max-h-96 transform list-none rounded-2xl transition-transform duration-300 ease-in-out hover:scale-105">
+          <Card className="flex flex-col justify-between overflow-hidden rounded-xl">
+            <CardHeader className="pb-4 text-center ">
+              <CardTitle className="line-clamp-3 text-lg leading-5 md:font-semibold md:leading-6 lg:text-2xl">
+                {post.title}
+              </CardTitle>
+            </CardHeader>
+            <CardDescription className="line-clamp-3 px-4 text-center">
+              {post.excerpt}
+            </CardDescription>
+            <CardContent className="group grow p-4 md:block">
+              <Image
+                className="rounded-lg"
+                src={post.coverImage?.url as string}
+                alt="Unable to load an image"
+                width={600}
+                height={300}
+                quality={100}
+              />
+            </CardContent>
+            <CardFooter className="flex items-center justify-center px-3 py-2 md:justify-between">
+              <p className="hidden text-xs md:inline-block">
+                {post?.date ? (post.date as string) : ""}
+              </p>
 
-            {post.author?.name ? (
-              <Link href={`/authors/${post.author?.id}`} className="text-xs italic hover:underline">
-                {post.author?.name}
-              </Link>
-            ) : (
-              <p className="text-xs italic">Author unknown</p>
-            )}
-          </CardFooter>
+              {post.author?.name ? (
+                <p className="text-xs italic">{post.author?.name}</p>
+              ) : (
+                <p className="text-xs italic">Author unknown</p>
+              )}
+            </CardFooter>
+          </Card>
         </Card>
-      </li>
-    </Link>
+      </Link>
+    </li>
   );
 };
 
