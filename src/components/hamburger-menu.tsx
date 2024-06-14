@@ -1,13 +1,19 @@
-// HamburgerMenu.js
+"use client";
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
+import { Menu, X } from "lucide-react";
+import { NavigationLink } from "@/components/navigation-link";
 import {
   navigationMenuTriggerStyle,
   NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
+  NavigationMenuItem,
 } from "@/components/ui/navigation-menu";
+
+type LinkType = {
+  displayText?: string | null;
+  slug?: string | null;
+};
 
 export const HamburgerMenu = ({ navigations }: { navigations: LinkType[] | undefined }) => {
   const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);

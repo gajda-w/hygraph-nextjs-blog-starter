@@ -11,9 +11,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 export const Navigation = async ({ navId }: { navId: string }) => {
-  const navigations = await executeGraphql(NavigationDocument, {
-    navId: navId,
-  });
+  const navigations = await executeGraphql({ query: NavigationDocument, variables: { navId } });
   return (
     <NavigationMenu className="max-w-ful hidden md:flex">
       <NavigationMenuList className="flex justify-between">

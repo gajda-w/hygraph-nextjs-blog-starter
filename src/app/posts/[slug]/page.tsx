@@ -1,4 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,10 +7,7 @@ import { PostBySlugDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 
 export default async function Post({ params: { slug } }: { params: { slug: string } }) {
-  const post = await executeGraphql(PostBySlugDocument, {
-    slug: slug,
-    cache: "no-store",
-  });
+  const post = await executeGraphql({ query: PostBySlugDocument, variables: { slug } });
 
   if (!post) {
     return notFound();
@@ -40,7 +36,7 @@ export default async function Post({ params: { slug } }: { params: { slug: strin
               href={`/authors/${post.post?.author?.id}`}
               className="flex justify-end text-sm hover:underline md:text-base lg:text-lg"
             >
-              ~{post.post?.author?.name}
+              {post.post?.author?.name}
             </Link>
           ) : (
             <p className="flex justify-end text-sm md:text-base lg:text-lg">Author unknown</p>
