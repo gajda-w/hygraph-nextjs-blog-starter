@@ -8,7 +8,7 @@ import { HamburgerMenu } from "@/components/hamburger-menu";
 import { NavigationDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 
-export const Header = async () => {
+export async function Header() {
   const navigationData = await executeGraphql({
     query: NavigationDocument,
     variables: { navId: "main-navigation" },
