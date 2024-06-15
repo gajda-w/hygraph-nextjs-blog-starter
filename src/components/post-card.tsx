@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export const PostCard = ({ post }: { post: PostFragment }) => {
+export function PostCard({ post }: { post: PostFragment }) {
   return (
     <li className="flex w-3/5 min-w-[160px] flex-col md:max-w-[300px] lg:m-3 lg:w-full my-5">
       <Link href={`/posts/${post.slug}`} key={post.id} className="">
