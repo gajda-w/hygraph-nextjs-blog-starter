@@ -26,20 +26,17 @@ export function PostsClient({ posts }: PostsClientProps) {
           align: "start",
         }}
         orientation={orientation}
-        className="mt-5 flex min-h-[600px] w-10/12 flex-row items-center"
+        className="max-w-10/12 flex min-h-[600px] flex-row items-center justify-center"
       >
-        <CarouselContent className=" ">
+        <CarouselContent>
           {posts.map((post, index) => (
-            <CarouselItem
-              key={index}
-              className="my-5 flex  flex-row items-center justify-center p-0 md:basis-1/3 lg:basis-1/4"
-            >
+            <CarouselItem key={index} className="md:basis-5/12 lg:basis-1/2 flex flex-col items-center">
               <PostCard post={post} key={post.id} />
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        {isMdOrLarger ? <CarouselPrevious /> : <></>}
+        {isMdOrLarger ? <CarouselNext /> : <></>}
       </Carousel>
     </div>
   );
