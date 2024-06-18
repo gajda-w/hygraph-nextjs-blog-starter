@@ -1,4 +1,4 @@
-import { PostsClient } from "./posts/PostClient";
+import { PostsCarousel } from "./posts/posts-carousel/posts-carousel";
 import { PostsGetListDocument } from "@/gql/graphql";
 import { executeGraphql } from "@/lib/graphql";
 
@@ -8,8 +8,8 @@ export default async function Home() {
   });
 
   return (
-  <div className="min-h-[calc(100vh-6.3rem)]">
-  <PostsClient posts={posts} />
-  </div>
+    <div className="min-h-[calc(100vh-6.3rem)]">
+      <PostsCarousel posts={posts} />
+    </div>
   );
 }
