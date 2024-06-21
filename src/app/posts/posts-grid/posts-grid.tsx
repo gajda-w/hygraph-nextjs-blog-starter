@@ -1,12 +1,11 @@
 import { PostCard } from "@/components/post-card";
-import { PostsGetListDocument } from "@/gql/graphql";
-import { executeGraphql } from "@/lib/graphql";
+import { type PostsGetListQuery } from "@/gql/graphql";
 
-export default async function PostsGrid() {
-  const { posts } = await executeGraphql({
-    query: PostsGetListDocument,
-  });
+interface IPostGridProps {
+  posts: PostsGetListQuery["posts"];
+}
 
+export default async function PostsGrid({posts}: IPostGridProps) {
   return (
     <div className="flex min-h-[calc(100vh-6.3rem)] w-full flex-col items-center justify-center">
       <h1 className="my-10 text-4xl">All posts</h1>

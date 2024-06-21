@@ -10,11 +10,11 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-interface PostsCarouselProps {
+interface IPostsCarouselProps {
   posts: PostsGetListQuery["posts"];
 }
 
-export function PostsCarousel({ posts }: PostsCarouselProps) {
+export function PostsCarousel({ posts }: IPostsCarouselProps) {
 
     const [isMdOrLarger, setIsMdOrLarger] = useState(false);
 
