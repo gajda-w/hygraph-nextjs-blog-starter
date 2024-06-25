@@ -4,7 +4,7 @@ import { type AuthorFragment } from "@/gql/graphql";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export const AuthorCard = ({ author }: { author: AuthorFragment }) => {
+export function AuthorCard({ author }:{ author: AuthorFragment }) {
   return (
     <Link
       href={`/authors/${author.id}`}

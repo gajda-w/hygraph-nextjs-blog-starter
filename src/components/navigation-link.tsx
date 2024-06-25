@@ -1,13 +1,13 @@
 import { type LinkFragment } from "@/gql/graphql";
 import { NavigationMenuLink, navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
-export const NavigationLink = ({
+export function NavigationLink({
   navigationLink,
   className,
 }: {
   navigationLink: LinkFragment;
   className?: string;
-}) => {
+}) {
   return (
     <NavigationMenuLink
       href={`/${navigationLink.slug as string}`}
@@ -16,4 +16,4 @@ export const NavigationLink = ({
       {navigationLink.displayText}
     </NavigationMenuLink>
   );
-};
+}

@@ -11,12 +11,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-export const PostCard = ({ post }: { post: PostFragment }) => {
+export function PostCard({ post }: { post: PostFragment }) {
   return (
-    <li className="flex w-4/5 min-w-[160px] flex-col md:w-4/5 md:max-w-[300px] lg:m-3 lg:w-full">
+    <li className="flex w-3/5 min-w-[160px] flex-col md:max-w-[300px] lg:m-3 lg:w-full my-5">
       <Link href={`/posts/${post.slug}`} key={post.id} className="">
-        <Card className="max-h-96 transform list-none rounded-2xl transition-transform duration-300 ease-in-out hover:scale-105">
-          <Card className="flex flex-col justify-between overflow-hidden rounded-xl">
+          <Card className="transform list-none transition-transform duration-300 ease-in-out hover:scale-105 flex flex-col justify-between overflow-hidden rounded-xl">
             <CardHeader className="pb-4 text-center ">
               <CardTitle className="line-clamp-3 text-lg leading-5 md:font-semibold md:leading-6 lg:text-2xl">
                 {post.title}
@@ -47,7 +46,7 @@ export const PostCard = ({ post }: { post: PostFragment }) => {
               )}
             </CardFooter>
           </Card>
-        </Card>
+
       </Link>
     </li>
   );

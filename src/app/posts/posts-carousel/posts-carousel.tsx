@@ -1,6 +1,5 @@
 "use client";
-
-import { useMediaQuery } from "@/components/hooks/useMediaQuery";
+import { useEffect, useState } from "react";
 import { PostCard } from "@/components/post-card";
 import { type PostsGetListQuery } from "@/gql/graphql";
 import {
@@ -11,12 +10,24 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-interface PostsClientProps {
+interface IPostsCarouselProps {
   posts: PostsGetListQuery["posts"];
 }
 
-export function PostsClient({ posts }: PostsClientProps) {
-  const isMdOrLarger = useMediaQuery("(min-width: 768px)");
+export function PostsCarousel({ posts }: IPostsCarouselProps) {
+
+    const [isMdOrLarger, setIsMdOrLarger] = useState(false);
+
+    useEffect(() => {
+    const handleResize = () => {
+      setIsMdOrLarger(window.innerWidth >= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const orientation = isMdOrLarger ? "horizontal" : "vertical";
 
   return (
@@ -26,20 +37,20 @@ export function PostsClient({ posts }: PostsClientProps) {
           align: "start",
         }}
         orientation={orientation}
-        className="mt-5 flex min-h-[600px] w-10/12 flex-row items-center"
+        className="max-w-10/12 flex min-h-[600px] flex-col items-center justify-center md:flex-row"
       >
-        <CarouselContent className=" ">
+        <CarouselContent>
           {posts.map((post, index) => (
             <CarouselItem
               key={index}
-              className="my-5 flex  flex-row items-center justify-center p-0 md:basis-1/3 lg:basis-1/4"
+              className="flex flex-col items-center md:basis-5/12 lg:basis-1/2"
             >
               <PostCard post={post} key={post.id} />
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevious className="hidden md:grid" />
+        <CarouselNext className="hidden md:grid" />
       </Carousel>
     </div>
   );

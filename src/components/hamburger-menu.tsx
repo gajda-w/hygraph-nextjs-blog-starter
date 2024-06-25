@@ -15,7 +15,7 @@ type LinkType = {
   slug?: string | null;
 };
 
-export const HamburgerMenu = ({ navigations }: { navigations: LinkType[] | undefined }) => {
+export function HamburgerMenu({ navigations }: { navigations: LinkType[] | undefined }) {
   const [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
   const { theme } = useTheme();
   const [isClient, setIsClient] = useState(false);

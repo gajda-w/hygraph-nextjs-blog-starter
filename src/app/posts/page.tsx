@@ -1,11 +1,16 @@
-import { PostsClient } from "./PostClient";
-import { PostsGetListDocument } from "@/gql/graphql";
+import PostsGrid from "./posts-grid/posts-grid";
 import { executeGraphql } from "@/lib/graphql";
+import { PostsGetListDocument } from "@/gql/graphql";
 
 export default async function Posts() {
-  const { posts } = await executeGraphql({
-    query: PostsGetListDocument,
+
+const { posts } = await executeGraphql({
+  query: PostsGetListDocument,
   });
 
-  return <PostsClient posts={posts} />;
+  return (
+    <>
+    <PostsGrid posts={posts}/>
+    </>
+  );
 }
